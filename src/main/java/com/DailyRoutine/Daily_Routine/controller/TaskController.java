@@ -34,9 +34,10 @@ public class TaskController {
     }
 
     @PutMapping("/{taskId}/cancel")
-    public ResponseEntity<TaskDto> updateTask(@AuthenticationPrincipal User user,
+    public ResponseEntity<String> updateTask(@AuthenticationPrincipal User user,
                                               @PathVariable("taskId")Long taskId){
-        return ResponseEntity.ok(taskService.updateTaskForCancel(user,taskId));
+        taskService.updateTaskForCancel(user,taskId);
+        return ResponseEntity.ok("Task canceled successfully...");
     }
 
     @PutMapping("/{taskId}/completed")

@@ -42,14 +42,13 @@ public class TaskService {
                 .toList();
     }
 
-    public TaskDto updateTaskForCancel(User user,Long taskId) {
+    public void updateTaskForCancel(User user,Long taskId) {
         Task task = taskRepository.findById(taskId).get();
-        if(!task.getUser().getId().equals(user.getId())){
+        if(!user.equals(task.getUser())){
             throw new UnauthorizedException("You are not allowed to update this task!");
         }
         task.updateState(TaskType.CANCELED);
         taskRepository.save(task);
-        return converter.convert(task);
     }
 
     public void updateTaskForCompleted(User user,Long taskId) {

@@ -59,17 +59,13 @@ public class UserService {
     }
 
     public Object login(RequestForLogin request) {
-        User user=getUserByUsername(request.getUsername());
+        User user = getUserByUsername(request.getUsername());
         if(!passwordEncoder.matches(request.getPassword(),user.getPassword())){
             throw new RuntimeException("Password invalid");
         }
         return jwtUtil.generateToken(request.getUsername());
     }
 
-    protected User findUserByUserId(Long userId){
-        return userRepository.findById(userId)
-                .orElseThrow(()->new UserNotFoundException("User could not found by id : "+userId));
-    }
 
     public User getUserByUsername(String username){
         Optional<User> user = userRepository.findByUsername(username);
