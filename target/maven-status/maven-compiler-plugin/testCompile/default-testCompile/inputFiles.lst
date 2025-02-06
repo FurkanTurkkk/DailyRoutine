@@ -1,1 +1,5 @@
-/Users/furkan/Desktop/Daily-Routine/src/test/java/com/DailyRoutine/Daily_Routine/DailyRoutineApplicationTests.java
+/Users/furkan/Desktop/Daily-Routine-BE/src/test/java/com/DailyRoutine/Daily_Routine/DailyRoutineApplicationTests.java
+/Users/furkan/Desktop/Daily-Routine-BE/src/test/java/com/DailyRoutine/Daily_Routine/service/EmailServiceTest.java
+/Users/furkan/Desktop/Daily-Routine-BE/src/test/java/com/DailyRoutine/Daily_Routine/service/ProductivityServiceTest.java
+/Users/furkan/Desktop/Daily-Routine-BE/src/test/java/com/DailyRoutine/Daily_Routine/service/TaskServiceTest.java
+/Users/furkan/Desktop/Daily-Routine-BE/src/test/java/com/DailyRoutine/Daily_Routine/service/UserServiceTest.java

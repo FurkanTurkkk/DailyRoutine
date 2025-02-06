@@ -36,7 +36,7 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUserForGmail(user,gmail));
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public ResponseEntity<UserDto> findUserByUsername(@AuthenticationPrincipal User user,
                                                       @PathVariable("username")String username){
         return ResponseEntity.ok(userService.findUserByUsername(user,username));

@@ -1,1 +1,5 @@
+com/DailyRoutine/Daily_Routine/service/UserServiceTest.class
 com/DailyRoutine/Daily_Routine/DailyRoutineApplicationTests.class
+com/DailyRoutine/Daily_Routine/service/TaskServiceTest.class
+com/DailyRoutine/Daily_Routine/service/ProductivityServiceTest.class
+com/DailyRoutine/Daily_Routine/service/EmailServiceTest.class

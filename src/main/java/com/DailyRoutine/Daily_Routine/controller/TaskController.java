@@ -47,6 +47,13 @@ public class TaskController {
         return ResponseEntity.ok("Congratulations !! You can finish one task ");
     }
 
+    @PutMapping("{taskId}/pending")
+    public ResponseEntity<String> taskDepending(@AuthenticationPrincipal User user,
+                                                @PathVariable("taskId")Long taskId){
+        taskService.updateTaskForPending(user,taskId);
+        return ResponseEntity.ok("Task again pending...");
+    }
+
     @GetMapping
     public ResponseEntity<List<TaskDto>> findTaskListByUser(@AuthenticationPrincipal User user){
         if (user == null) {

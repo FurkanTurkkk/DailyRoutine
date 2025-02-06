@@ -10,10 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 @EnableScheduling
 public class DailyRoutineApplication {
-
-
 	public static void main(String[] args) {
 		SpringApplication.run(DailyRoutineApplication.class, args);
 	}
-
 }

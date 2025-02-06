@@ -32,6 +32,7 @@ public class TaskService {
                 request.getFinishDay(),
                 user
         );
+        user.getTaskList().add(task);
         taskRepository.save(task);
     }
 
@@ -48,15 +49,25 @@ public class TaskService {
             throw new UnauthorizedException("You are not allowed to update this task!");
         }
         task.updateState(TaskType.CANCELED);
+        user.getTaskList().remove(task);
         taskRepository.save(task);
     }
 
     public void updateTaskForCompleted(User user,Long taskId) {
         Task task = taskRepository.findById(taskId).get();
-        if (!task.getUser().getId().equals(user.getId())) {
+        if (!task.getUser().equals(user)) {
             throw new UnauthorizedException("You are not allowed to update this task!");
         }
         task.updateState(TaskType.COMPLETED);
+        taskRepository.save(task);
+    }
+
+    public void updateTaskForPending(User user, Long taskId) {
+        Task task = taskRepository.findById(taskId).get();
+        if(!task.getUser().equals(user)){
+            throw new UnauthorizedException("You are not allowed to update this task!");
+        }
+        task.updateState(TaskType.PENDING);
         taskRepository.save(task);
     }
 
@@ -71,4 +82,5 @@ public class TaskService {
     protected int getCompletedTaskCountByUserId(Long userId, TaskType type, LocalDate start, LocalDate end){
         return taskRepository.countByUserIdAndStateAndCreationDayBetween(userId,type,start,end);
     }
+
 }

@@ -23,7 +23,7 @@ public class ReminderScheduler {
         this.userService = userService;
     }
 
-    @Scheduled(cron = "0 10 21 * * ?") // 21.10 at pm send mail everyday.
+    @Scheduled(cron = "0 0 21 * * ?") // 21.00 at pm send mail everyday.
     public void sendDailyTaskReminders(){
         List<User> userList = userService.findUserList();
 
@@ -40,12 +40,12 @@ public class ReminderScheduler {
         StringBuilder sb = new StringBuilder("You must complete task list :\n");
         for (Task task : tasks) {
             sb.append("- ").append(task.getExplanation()).
-                    append(" last ").
-                    append(task.getFinishDay().getDayOfYear() - task.getCreationDay().getDayOfYear()).
-                    append(" day ").append("\n");
+                    append(" -> Remaining Time : ").
+                    append(task.getFinishDay().getDayOfYear() - task.getCreationDay().getDayOfYear())
+                    .append("\n");
         }
-        if(tasks.isEmpty()) sb.append("Congratulations ! You can already do these works ...");
-        sb.append("These tasks are so easy for you ! You can do this ... ");
+        sb.append("These tasks are so easy for you ! You can do this ... ").append("\n");
+        sb.append("******************************************************");
         return sb.toString();
     }
 }

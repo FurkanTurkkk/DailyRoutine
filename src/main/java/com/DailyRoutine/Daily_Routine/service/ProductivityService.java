@@ -36,6 +36,7 @@ public class ProductivityService {
         int totalTask = taskService.getAllTaskCountByUserId(userId,start,end);
         int completedTask = taskService.getCompletedTaskCountByUserId(userId, TaskType.COMPLETED,start,end);
 
+        if(totalTask==0) return 0.0;
         if(completedTask==0) return 0.0;
 
         return (completedTask/(double)totalTask)*100;
