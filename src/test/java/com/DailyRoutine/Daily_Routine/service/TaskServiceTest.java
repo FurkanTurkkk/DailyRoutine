@@ -3,6 +3,7 @@ package com.DailyRoutine.Daily_Routine.service;
 import com.DailyRoutine.Daily_Routine.dto.TaskDto;
 import com.DailyRoutine.Daily_Routine.dto.converter.TaskDtoConverter;
 import com.DailyRoutine.Daily_Routine.model.Task;
+import com.DailyRoutine.Daily_Routine.model.TaskType;
 import com.DailyRoutine.Daily_Routine.model.User;
 import com.DailyRoutine.Daily_Routine.repository.TaskRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -94,6 +95,26 @@ public class TaskServiceTest {
         Mockito.verify(converter).convert(task2);
     }
 
+    @Test
+    void shouldCalculateAllTaskForUserForProductivity(){
+        LocalDate today = LocalDate.now();
+        LocalDate finishDay = LocalDate.of(2026,10,10);
+        Long userId = 1L;
 
+        taskRepository.countByUserIdAndCreationDayBetween(userId,finishDay,today);
+
+        Mockito.verify(taskRepository).countByUserIdAndCreationDayBetween(userId,finishDay,today);
+    }
+
+    @Test
+    void shouldCalculateCompletedTaskForUserForProductivity(){
+        LocalDate today = LocalDate.now();
+        LocalDate finishDay = LocalDate.of(2026,10,10);
+        Long userId = 1L;
+
+        taskRepository.countByUserIdAndStateAndCreationDayBetween(userId, TaskType.COMPLETED,finishDay,today);
+
+        Mockito.verify(taskRepository).countByUserIdAndStateAndCreationDayBetween(userId,TaskType.COMPLETED,finishDay,today);
+    }
 
 }

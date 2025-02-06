@@ -44,6 +44,8 @@ public class ReminderScheduler {
                     append(task.getFinishDay().getDayOfYear() - task.getCreationDay().getDayOfYear()).
                     append(" day ").append("\n");
         }
+        if(tasks.isEmpty()) sb.append("Congratulations ! You can already do these works ...");
+        sb.append("These tasks are so easy for you ! You can do this ... ");
         return sb.toString();
     }
 }
