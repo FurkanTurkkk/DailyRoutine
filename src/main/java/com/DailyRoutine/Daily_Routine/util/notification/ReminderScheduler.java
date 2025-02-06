@@ -23,7 +23,7 @@ public class ReminderScheduler {
         this.userService = userService;
     }
 
-    @Scheduled(cron = "0 0 21 * * ?") // 21.00 at pm send mail everyday.
+    @Scheduled(cron = "0 04 19 * * ?") // 21.00 at pm send mail everyday.
     public void sendDailyTaskReminders(){
         List<User> userList = userService.findUserList();
 

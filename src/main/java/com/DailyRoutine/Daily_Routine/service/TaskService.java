@@ -32,7 +32,6 @@ public class TaskService {
                 request.getFinishDay(),
                 user
         );
-        user.getTaskList().add(task);
         taskRepository.save(task);
     }
 
@@ -49,7 +48,6 @@ public class TaskService {
             throw new UnauthorizedException("You are not allowed to update this task!");
         }
         task.updateState(TaskType.CANCELED);
-        user.getTaskList().remove(task);
         taskRepository.save(task);
     }
 
